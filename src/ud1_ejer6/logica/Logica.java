@@ -14,7 +14,7 @@ import ud1_ejer6.gui.ventanas.Vacceso;
  * @author Jose Javier Bailón Ortiz
  */
 public class Logica {
-    private static DatosLogin datosLogin=new DatosLogin("usuario","1234");
+    private static DatosLogin datosLogin=new DatosLogin("1","1");
     public Logica() {
 
     }

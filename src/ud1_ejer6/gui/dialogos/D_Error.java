@@ -46,6 +46,7 @@ public class D_Error extends javax.swing.JDialog {
         lbMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         btnVolver.setText("VOLVER");
+        btnVolver.setFocusCycleRoot(true);
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
