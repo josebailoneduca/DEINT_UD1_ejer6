@@ -1,4 +1,5 @@
 /*
+ * LICENCIA JOSE JAVIER BO
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -10,7 +11,7 @@ import java.util.Vector;
 
 /**
  *
- * @author Bailon
+ * @author Jose Javier BO
  */
 public class Hijo {
 
@@ -20,6 +21,14 @@ public class Hijo {
     String nivel;
     Date fechaNacimiento;
 
+    /**
+     * Constructor
+     * @param nombre
+     * @param apellidos
+     * @param deporte
+     * @param nivel
+     * @param fechaNacimiento 
+     */
     public Hijo(String nombre, String apellidos, String deporte, String nivel, Date fechaNacimiento) {
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -28,6 +37,7 @@ public class Hijo {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    //GETTERS Y SETTERS
     public String getNombre() {
         return nombre;
     }
@@ -69,7 +79,10 @@ public class Hijo {
     }
     
     
-    
+    /**
+     * Convierte los datos del DTO a un array de strings
+     * @return  El array de Strings
+     */
     public String[] toArrayString() {
               //{"Nombre","Apellidos", "Fecha Nac.", "Deporte", "Nivel"};
                String[] salida=new String[5];
@@ -85,4 +98,4 @@ public class Hijo {
     
     
     
-}
+}// fin clase Hijo

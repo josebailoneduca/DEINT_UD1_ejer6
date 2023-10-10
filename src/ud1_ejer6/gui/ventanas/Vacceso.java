@@ -11,6 +11,7 @@ import ud1_ejer6.gui.dialogos.D_Error;
 import ud1_ejer6.logica.Logica;
 
 /**
+ * Ventana de login
  *
  * @author Jose Javier BO
  */
@@ -21,6 +22,42 @@ public class Vacceso extends javax.swing.JFrame {
      */
     public Vacceso() {
         initComponents();
+    }
+
+    //FUNCIONES PROPIAS
+    
+    /**
+     * Intenta realizar el login preguntando a la Logica si los datos son correctos
+     * En caso de ser correctos muestra la ventana e registro. Si no es correcta muestra un error
+     */
+    private void intentarLogin() {
+        //recopilar datos
+        DatosLogin dLogin = new DatosLogin(this.inputUsuario.getText(), new String(this.inputPassword.getPassword()));
+        //comprobar si es login correcto
+        if (Logica.intentarLogin(dLogin)) {
+            mostrarVentanaRegistro();
+        } else {
+            mostrarError();
+        }
+    }
+    
+    /**
+     * Muestra el dialogo de login erroneo
+     */
+    private void mostrarError() {
+        D_Error dError = new D_Error(this, true, "Nombre / usuario incorrectos");
+        dError.setLocationRelativeTo(this);
+        dError.setVisible(true);
+    }
+
+    /**
+     * Muesra la ventana de registro y elimina la de login
+     */
+    private void mostrarVentanaRegistro() {
+        Vregistro vRegistro = new Vregistro();
+        vRegistro.setLocationRelativeTo(null);
+        vRegistro.setVisible(true);
+        this.dispose();
     }
 
     /**
@@ -148,35 +185,15 @@ public class Vacceso extends javax.swing.JFrame {
         this.intentarLogin();
     }//GEN-LAST:event_btnAccederActionPerformed
 
-    
+
     private void inputUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputUsuarioActionPerformed
-       this.intentarLogin();
+        this.intentarLogin();
     }//GEN-LAST:event_inputUsuarioActionPerformed
 
     private void inputPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputPasswordActionPerformed
         this.intentarLogin();
     }//GEN-LAST:event_inputPasswordActionPerformed
 
-    
-    private void intentarLogin(){
-            DatosLogin dLogin = new DatosLogin(this.inputUsuario.getText(), new String(this.inputPassword.getPassword()));
-        if (Logica.intentarLogin(dLogin)) {
-            mostrarVentanaRegistro();
-        } else {
-            mostrarError();
-        }}
-    private void mostrarError() {
-        D_Error dError = new D_Error(this, true, "Nombre / usuario incorrectos");
-        dError.setLocationRelativeTo(this);
-        dError.setVisible(true);
-    }
-
-        private void mostrarVentanaRegistro() {
-            Vregistro vRegistro = new Vregistro();
-            vRegistro.setLocationRelativeTo(null);
-            vRegistro.setVisible(true);
-            this.dispose();
-        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcceder;
@@ -188,6 +205,5 @@ public class Vacceso extends javax.swing.JFrame {
     private javax.swing.JLabel lbUsuario;
     private javax.swing.JPanel panInputs;
     // End of variables declaration//GEN-END:variables
-
 
 }

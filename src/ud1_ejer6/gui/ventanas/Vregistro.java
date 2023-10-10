@@ -7,6 +7,7 @@ Lista de paquetes:
 package ud1_ejer6.gui.ventanas;
 
 import java.util.List;
+import javax.swing.ButtonModel;
 import javax.swing.table.DefaultTableModel;
 import ud1_ejer6.dto.Hijo;
 import ud1_ejer6.gui.dialogos.D_AddHijo;
@@ -15,7 +16,7 @@ import ud1_ejer6.gui.dialogos.D_Exito;
 import ud1_ejer6.logica.Logica;
 
 /**
- *
+ * Ventana de registro de matriculas
  * @author Jose Javier BO
  */
 public class Vregistro extends javax.swing.JFrame {
@@ -25,45 +26,44 @@ public class Vregistro extends javax.swing.JFrame {
      */
     public Vregistro() {
         initComponents();
+        //inicializa la tabla de hijos
         refrescarTabla();
+        //la oculta
         ocultarTabla();
         
     }
     
     
     
-        /**
-     *  MODIFICADO!
-     *  Método privado de refresco de la tabla
-     *  - Se puede configurar desde el diseño, pero es mejor desde código, 
-     *    ya que posteriormente vamos a necesitar editarla.                  
-    */
+     /**
+      * Refresca la tabla de hijos con los datos de hijos que tiene la Logica
+      */
     private void refrescarTabla(){
  
         //1- Creación del modelo de tabla
         DefaultTableModel dtm = new DefaultTableModel();
         
-        //2- Creo del índice de las columnas en el modelo
+        //2- Creo del indice de las columnas en el modelo
         String [] columnas = new String []{"Nombre","Apellidos", "Fecha Nac.", "Deporte", "Nivel"};
-        //Establece el nombre a las columnas. Se le debe pasar un object[]
+        //Establece el nombre a las columnas
         dtm.setColumnIdentifiers(columnas);
             
-        // NUEVO !!
-        //3- Añado la lista de clientes que tenga en la lógica de negocio
-        //Recupero lista clientes
+        //3- Añadir lista de hijos a la tabla
+        //Recupero lista de hijos
         List<Hijo> listaHijos = Logica.getListaHijos();
-        //La recorro y la voy añadiendo a la tabla
+        //Se agregan las filas de la tabla
         for(Hijo hijo: listaHijos){
             dtm.addRow(hijo.toArrayString());
         }//end foreach
         
             
-        //4- Establecer el modelo para el componente JTable        
+        //4- Establecer el modelo para la tabla       
         this.tblHijos.setModel(dtm); 
         
-        //5- Hacemos que la tabla NO sea modificable
+        //5- Hacer que la tabla no sea modificable
         this.tblHijos.setEnabled(false);
-        //Si no lo hacemos los datos de ALTA de la tabla podrán ser modificcados
+        
+        //poner la tabla visible
         mostrarTabla();
     }//end inicializarTabla
 
@@ -293,6 +293,10 @@ public class Vregistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Accion del boton de mostrar/ocultar tabla
+     * @param evt 
+     */
     private void btnToggleTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleTablaActionPerformed
         boolean esVisible = this.scrollTblHijos.isVisible();
         if (esVisible) {
@@ -302,21 +306,47 @@ public class Vregistro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnToggleTablaActionPerformed
 
+    /**
+     * Accion del boton de agregar hijo
+     * @param evt 
+     */
     private void btnAddHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddHijoActionPerformed
-                //Creación dialogo de alta y lo mostramos
+        //Creación dialogo de agregar hijo
         D_AddHijo dHijo = new D_AddHijo (this,true);
-        dHijo.setLocationRelativeTo(null);//Centrar el JDialog al cargar
+        dHijo.setLocationRelativeTo(null);
         dHijo.setVisible(true);
-        //actualizar tabla
+        //actualizar tabla. Se ejecuta al terminar el dialogo modal de agregar hijo
         refrescarTabla();
     }//GEN-LAST:event_btnAddHijoActionPerformed
 
+    /**
+     * Accion del boton de matricular
+     * @param evt 
+     */
     private void btnMatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatricularActionPerformed
         //recoger datos
-        //validacion
+        String deporte = inputDeporte.getSelectedItem().toString();
+        String nivel = inputNivel.getValue().toString();
+        boolean trimestral = inputTrimestral.isSelected();
+        boolean anual = inputAnual.isSelected();
+        ButtonModel turno = btnGrpTurno.getSelection();
         
+        //comprobar que los datos son correctos
+        //en caso de no serlo se muestra el error y se para la matriculacion
+        if (turno==null){
+            mostrarError("Debe seleccionar un turno");
+            return;
+        }
+        
+        //avisar del exito en la matriculacion
+        mostrarExito("Se realizó la matrícula correctamente");
     }//GEN-LAST:event_btnMatricularActionPerformed
 
+    //METODOS PROPIOS
+    
+    /**
+     * Oculta la tabla de hijos
+     */
     private void ocultarTabla() {
         //check si es necesario ocultar
         this.scrollTblHijos.setVisible(false);
@@ -324,18 +354,31 @@ public class Vregistro extends javax.swing.JFrame {
         this.pack();
     }
 
+    /**
+     * Muestra la tabla de hijos
+     */
     private void mostrarTabla() {
         //check si es necesario mostrar
         this.scrollTblHijos.setVisible(true);
         this.tblHijos.setVisible(true);
         this.pack();
     }
+    
+    /**
+     * Muestra el dialogo de error
+     * @param msg Mensaje a mostrar
+     */
     private void mostrarError(String msg) {
         D_Error dError = new D_Error(this, true, msg);
         dError.setLocationRelativeTo(this);
         dError.setVisible(true);
     }
-        private void mostrarExito(String msg) {
+    
+    /**
+     * Muestra el dialogo de exito
+     * @param msg Mensaje a mostrar
+     */
+    private void mostrarExito(String msg) {
         D_Exito dExito = new D_Exito(this, true, msg);
         dExito.setLocationRelativeTo(this);
         dExito.setVisible(true);

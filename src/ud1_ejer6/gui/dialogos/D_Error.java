@@ -7,13 +7,16 @@ Lista de paquetes:
 package ud1_ejer6.gui.dialogos;
 
 /**
- *
+ * Muestra un dialogo de error con un mensaje
  * @author Jose Javier BO
  */
 public class D_Error extends javax.swing.JDialog {
 
     /**
-     * Creates new form Error
+     * Constructor
+     * @param parent El contenedor padre
+     * @param modal Estado modal o no modal
+     * @param msg  Mensaje a mostrar
      */
     public D_Error(java.awt.Frame parent, boolean modal, String msg) {
         super(parent, modal);
@@ -94,6 +97,10 @@ public class D_Error extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Accion del bton volver
+     * @param evt 
+     */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed

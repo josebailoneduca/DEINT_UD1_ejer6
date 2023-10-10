@@ -12,7 +12,7 @@ import ud1_ejer6.dto.Hijo;
 import ud1_ejer6.logica.Logica;
 
 /**
- *
+ * Dialogo de agregar un hijo
  * @author Jose Javier BO
  */
 public class D_AddHijo extends javax.swing.JDialog {
@@ -256,8 +256,12 @@ public class D_AddHijo extends javax.swing.JDialog {
     private javax.swing.JPanel panelGeneral;
     // End of variables declaration//GEN-END:variables
 
+    
+    /**
+     * Muestra un error con el mensaje suministrado
+     * @param msg  El mensaje a mostrar
+     */
     private void muestraError(String msg) {
-
         D_Error dError = new D_Error((JFrame) this.getParent(), true, msg);
         dError.setLocationRelativeTo(this);
         dError.setVisible(true);

@@ -13,24 +13,55 @@ import ud1_ejer6.dto.Hijo;
 import ud1_ejer6.gui.ventanas.Vacceso;
 
 /**
- *
+ * Clase de logica de negocio
+ * 
  * @author Jose Javier Bailón Ortiz
  */
 public class Logica {
-    private static DatosLogin datosLogin=new DatosLogin("1","1");
+    //ATRIBUTOS
+    /**
+     * Datos correctos de login admin,1234
+     */
+    private static DatosLogin datosLogin=new DatosLogin("admin","1234");
+    
+    /**
+     * Lista de hijos de la matricula
+     */
     private static ArrayList<Hijo> hijos = new ArrayList<Hijo>();
     
+    /**
+     * Agrega un hijo a la matricula
+     * @param hijo Hijo a agregar
+     */
     public static void addHijo(Hijo hijo){
         hijos.add(hijo);
     }
+    
+    /**
+     * Devuelve la lista de hijos de la matricula
+     * @return La lista de hijos
+     */
     public static List<Hijo> getListaHijos() {
         return hijos;
     }
+    
+    /**
+     * Comprueba que unos datos de login son correctos
+     * @param dLogin Los datos del login
+     * @return True si son correctos, False si no lo son
+     */
     public static boolean intentarLogin(DatosLogin dLogin){
         boolean usuarioOk=Logica.datosLogin.getUsuario().equals(dLogin.getUsuario());
         boolean passwordOk=Logica.datosLogin.getPassword().equals(dLogin.getPassword());
         return  (usuarioOk && passwordOk);            
     }
+    
+    
+    
+    /**
+     * MAIN inicio del programa
+     * @param args 
+     */
     public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
