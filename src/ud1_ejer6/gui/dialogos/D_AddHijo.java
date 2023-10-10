@@ -82,6 +82,7 @@ public class D_AddHijo extends javax.swing.JDialog {
         lbFechaNacimiento.setText("Fecha de nacimiento:");
 
         inputFechaNacimiento.setModel(new javax.swing.SpinnerDateModel());
+        inputFechaNacimiento.setEditor(new javax.swing.JSpinner.DateEditor(inputFechaNacimiento, "dd/MM/yyyy"));
 
         javax.swing.GroupLayout panelFechaLayout = new javax.swing.GroupLayout(panelFecha);
         panelFecha.setLayout(panelFechaLayout);

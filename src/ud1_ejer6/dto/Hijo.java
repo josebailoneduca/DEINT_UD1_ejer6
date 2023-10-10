@@ -88,7 +88,7 @@ public class Hijo {
                String[] salida=new String[5];
                salida[0]=this.nombre;
                salida[1]=this.apellidos;
-               SimpleDateFormat sdf=new SimpleDateFormat("dd/mm/yyyy");
+               SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
                salida[2]=sdf.format(fechaNacimiento);
                salida[3]=this.deporte;
                salida[4]=this.nivel;

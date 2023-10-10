@@ -94,6 +94,7 @@ public class Vregistro extends javax.swing.JFrame {
         panelHijos = new javax.swing.JPanel();
         btnToggleTabla = new javax.swing.JButton();
         btnAddHijo = new javax.swing.JButton();
+        panelTabla = new javax.swing.JPanel();
         scrollTblHijos = new javax.swing.JScrollPane();
         tblHijos = new javax.swing.JTable();
         btnMatricular = new javax.swing.JButton();
@@ -131,8 +132,7 @@ public class Vregistro extends javax.swing.JFrame {
         inputAnual.setText("Anual");
 
         panelHijos.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Hijos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
-        panelHijos.setPreferredSize(new java.awt.Dimension(397, 65));
-        panelHijos.setRequestFocusEnabled(false);
+        panelHijos.setPreferredSize(new java.awt.Dimension(397, 171));
 
         btnToggleTabla.setLabel("Ver/Ocultar tabla");
         btnToggleTabla.addActionListener(new java.awt.event.ActionListener() {
@@ -158,20 +158,26 @@ public class Vregistro extends javax.swing.JFrame {
         ));
         scrollTblHijos.setViewportView(tblHijos);
 
+        javax.swing.GroupLayout panelTablaLayout = new javax.swing.GroupLayout(panelTabla);
+        panelTabla.setLayout(panelTablaLayout);
+        panelTablaLayout.setHorizontalGroup(
+            panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scrollTblHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+        panelTablaLayout.setVerticalGroup(
+            panelTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scrollTblHijos, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout panelHijosLayout = new javax.swing.GroupLayout(panelHijos);
         panelHijos.setLayout(panelHijosLayout);
         panelHijosLayout.setHorizontalGroup(
             panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHijosLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addComponent(btnToggleTabla)
-                .addGap(146, 146, 146)
-                .addComponent(btnAddHijo)
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHijosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scrollTblHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAddHijo))
+            .addComponent(panelTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelHijosLayout.setVerticalGroup(
             panelHijosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,8 +187,7 @@ public class Vregistro extends javax.swing.JFrame {
                     .addComponent(btnToggleTabla)
                     .addComponent(btnAddHijo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTblHijos, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(panelTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelInternoLayout = new javax.swing.GroupLayout(panelInterno);
@@ -214,9 +219,10 @@ public class Vregistro extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelInternoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(separador)
+                .addGroup(panelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelHijos, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                    .addComponent(separador))
                 .addContainerGap())
-            .addComponent(panelHijos, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
         );
         panelInternoLayout.setVerticalGroup(
             panelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,8 +248,8 @@ public class Vregistro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelHijos, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(panelHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         btnMatricular.setLabel("MATRICULAR");
@@ -271,8 +277,8 @@ public class Vregistro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelInterno, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(btnMatricular)
                 .addContainerGap())
         );
@@ -349,6 +355,7 @@ public class Vregistro extends javax.swing.JFrame {
      */
     private void ocultarTabla() {
         //check si es necesario ocultar
+        this.panelTabla.setVisible(false);
         this.scrollTblHijos.setVisible(false);
         this.tblHijos.setVisible(false);
         this.pack();
@@ -359,6 +366,7 @@ public class Vregistro extends javax.swing.JFrame {
      */
     private void mostrarTabla() {
         //check si es necesario mostrar
+        this.panelTabla.setVisible(true);
         this.scrollTblHijos.setVisible(true);
         this.tblHijos.setVisible(true);
         this.pack();
@@ -403,6 +411,7 @@ public class Vregistro extends javax.swing.JFrame {
     private javax.swing.JPanel panelGeneral;
     private javax.swing.JPanel panelHijos;
     private javax.swing.JPanel panelInterno;
+    private javax.swing.JPanel panelTabla;
     private javax.swing.JScrollPane scrollTblHijos;
     private javax.swing.JSeparator separador;
     private javax.swing.JTable tblHijos;
