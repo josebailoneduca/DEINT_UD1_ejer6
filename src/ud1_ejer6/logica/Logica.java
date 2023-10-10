@@ -6,7 +6,10 @@ Lista de paquetes:
  */
 package ud1_ejer6.logica;
 
+import java.util.ArrayList;
+import java.util.List;
 import ud1_ejer6.dto.DatosLogin;
+import ud1_ejer6.dto.Hijo;
 import ud1_ejer6.gui.ventanas.Vacceso;
 
 /**
@@ -15,10 +18,14 @@ import ud1_ejer6.gui.ventanas.Vacceso;
  */
 public class Logica {
     private static DatosLogin datosLogin=new DatosLogin("1","1");
-    public Logica() {
-
+    private static ArrayList<Hijo> hijos = new ArrayList<Hijo>();
+    
+    public static void addHijo(Hijo hijo){
+        hijos.add(hijo);
     }
-
+    public static List<Hijo> getListaHijos() {
+        return hijos;
+    }
     public static boolean intentarLogin(DatosLogin dLogin){
         boolean usuarioOk=Logica.datosLogin.getUsuario().equals(dLogin.getUsuario());
         boolean passwordOk=Logica.datosLogin.getPassword().equals(dLogin.getPassword());
@@ -46,7 +53,7 @@ public class Logica {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Vacceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        new Logica();
+      
 
         //mostrar ventana de acceso
         java.awt.EventQueue.invokeLater(() -> {
@@ -56,5 +63,7 @@ public class Logica {
         });
 
     }
+
+
 
 }//end Logica

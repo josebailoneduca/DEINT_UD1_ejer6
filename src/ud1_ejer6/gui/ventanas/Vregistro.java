@@ -6,6 +6,14 @@ Lista de paquetes:
  */
 package ud1_ejer6.gui.ventanas;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import ud1_ejer6.dto.Hijo;
+import ud1_ejer6.gui.dialogos.D_AddHijo;
+import ud1_ejer6.gui.dialogos.D_Error;
+import ud1_ejer6.gui.dialogos.D_Exito;
+import ud1_ejer6.logica.Logica;
+
 /**
  *
  * @author Jose Javier BO
@@ -17,8 +25,47 @@ public class Vregistro extends javax.swing.JFrame {
      */
     public Vregistro() {
         initComponents();
-
+        refrescarTabla();
+        ocultarTabla();
+        
     }
+    
+    
+    
+        /**
+     *  MODIFICADO!
+     *  Método privado de refresco de la tabla
+     *  - Se puede configurar desde el diseño, pero es mejor desde código, 
+     *    ya que posteriormente vamos a necesitar editarla.                  
+    */
+    private void refrescarTabla(){
+ 
+        //1- Creación del modelo de tabla
+        DefaultTableModel dtm = new DefaultTableModel();
+        
+        //2- Creo del índice de las columnas en el modelo
+        String [] columnas = new String []{"Nombre","Apellidos", "Fecha Nac.", "Deporte", "Nivel"};
+        //Establece el nombre a las columnas. Se le debe pasar un object[]
+        dtm.setColumnIdentifiers(columnas);
+            
+        // NUEVO !!
+        //3- Añado la lista de clientes que tenga en la lógica de negocio
+        //Recupero lista clientes
+        List<Hijo> listaHijos = Logica.getListaHijos();
+        //La recorro y la voy añadiendo a la tabla
+        for(Hijo hijo: listaHijos){
+            dtm.addRow(hijo.toArrayString());
+        }//end foreach
+        
+            
+        //4- Establecer el modelo para el componente JTable        
+        this.tblHijos.setModel(dtm); 
+        
+        //5- Hacemos que la tabla NO sea modificable
+        this.tblHijos.setEnabled(false);
+        //Si no lo hacemos los datos de ALTA de la tabla podrán ser modificcados
+        mostrarTabla();
+    }//end inicializarTabla
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,16 +142,18 @@ public class Vregistro extends javax.swing.JFrame {
         });
 
         btnAddHijo.setLabel("Añadir HIjo");
+        btnAddHijo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddHijoActionPerformed(evt);
+            }
+        });
 
         tblHijos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         scrollTblHijos.setViewportView(tblHijos);
@@ -132,7 +181,7 @@ public class Vregistro extends javax.swing.JFrame {
                     .addComponent(btnToggleTabla)
                     .addComponent(btnAddHijo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTblHijos, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                .addComponent(scrollTblHijos, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -193,11 +242,16 @@ public class Vregistro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelHijos, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                .addComponent(panelHijos, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         btnMatricular.setLabel("MATRICULAR");
+        btnMatricular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMatricularActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelGeneralLayout = new javax.swing.GroupLayout(panelGeneral);
         panelGeneral.setLayout(panelGeneralLayout);
@@ -217,8 +271,8 @@ public class Vregistro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelInterno, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMatricular)
                 .addContainerGap())
         );
@@ -231,36 +285,61 @@ public class Vregistro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnToggleTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleTablaActionPerformed
-        boolean esVisible = !this.scrollTblHijos.isVisible();
-        if (!esVisible) {
+        boolean esVisible = this.scrollTblHijos.isVisible();
+        if (esVisible) {
             ocultarTabla();
         } else {
             mostrarTabla();
         }
     }//GEN-LAST:event_btnToggleTablaActionPerformed
 
-    private void ocultarTabla() {
-        this.scrollTblHijos.setVisible(false);
-        int alturaTabla = this.scrollTblHijos.getHeight();
-        this.panelInterno.setSize(this.panelInterno.getWidth(), this.panelInterno.getSize().height - alturaTabla);
-        this.panelHijos.setSize(this.panelHijos.getWidth(), this.panelHijos.getSize().height - alturaTabla);
+    private void btnAddHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddHijoActionPerformed
+                //Creación dialogo de alta y lo mostramos
+        D_AddHijo dHijo = new D_AddHijo (this,true);
+        dHijo.setLocationRelativeTo(null);//Centrar el JDialog al cargar
+        dHijo.setVisible(true);
+        //actualizar tabla
+        refrescarTabla();
+    }//GEN-LAST:event_btnAddHijoActionPerformed
 
+    private void btnMatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatricularActionPerformed
+        //recoger datos
+        //validacion
+        
+    }//GEN-LAST:event_btnMatricularActionPerformed
+
+    private void ocultarTabla() {
+        //check si es necesario ocultar
+        this.scrollTblHijos.setVisible(false);
+        this.tblHijos.setVisible(false);
+        this.pack();
     }
 
     private void mostrarTabla() {
+        //check si es necesario mostrar
         this.scrollTblHijos.setVisible(true);
-        int alturaTabla = this.scrollTblHijos.getHeight();
-        this.panelInterno.setSize(this.panelInterno.getWidth(), this.panelInterno.getSize().height + alturaTabla);
-        this.panelHijos.setSize(this.panelHijos.getWidth(), this.panelHijos.getSize().height + alturaTabla);
+        this.tblHijos.setVisible(true);
+        this.pack();
     }
-
+    private void mostrarError(String msg) {
+        D_Error dError = new D_Error(this, true, msg);
+        dError.setLocationRelativeTo(this);
+        dError.setVisible(true);
+    }
+        private void mostrarExito(String msg) {
+        D_Exito dExito = new D_Exito(this, true, msg);
+        dExito.setLocationRelativeTo(this);
+        dExito.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddHijo;

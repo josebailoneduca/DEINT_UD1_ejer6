@@ -6,6 +6,11 @@ Lista de paquetes:
  */
 package ud1_ejer6.gui.dialogos;
 
+import java.util.Date;
+import javax.swing.JFrame;
+import ud1_ejer6.dto.Hijo;
+import ud1_ejer6.logica.Logica;
+
 /**
  *
  * @author Jose Javier BO
@@ -157,6 +162,11 @@ public class D_AddHijo extends javax.swing.JDialog {
         );
 
         btnAdd.setText("AÑADIR");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelGeneralLayout = new javax.swing.GroupLayout(panelGeneral);
         panelGeneral.setLayout(panelGeneralLayout);
@@ -203,7 +213,30 @@ public class D_AddHijo extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNombreActionPerformed
 
- 
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        //validacion
+        String nombre = inputNombre.getText();
+        String apellidos = inputApellidos.getText();
+        String deporte = inputDeporte.getSelectedItem().toString();
+        String nivel = inputNivel.getValue().toString();
+        Date fechaNacimiento = (Date) this.inputFechaNacimiento.getValue();
+
+        if (nombre == null || nombre.equals("")) {
+            muestraError("Debe escribir un nombre");
+            return;
+        }
+        if (apellidos == null || apellidos.equals("")) {
+            muestraError("Debe escribir un apellido");
+            return;
+
+        }
+        Hijo hijo = new Hijo(nombre, apellidos, deporte, nivel, fechaNacimiento);
+        //envio    
+        Logica.addHijo(hijo);
+        this.dispose();
+    
+    }//GEN-LAST:event_btnAddActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -222,4 +255,11 @@ public class D_AddHijo extends javax.swing.JDialog {
     private javax.swing.JPanel panelFecha;
     private javax.swing.JPanel panelGeneral;
     // End of variables declaration//GEN-END:variables
+
+    private void muestraError(String msg) {
+
+        D_Error dError = new D_Error((JFrame) this.getParent(), true, msg);
+        dError.setLocationRelativeTo(this);
+        dError.setVisible(true);
+    }
 }
