@@ -20,7 +20,7 @@ import ud1_ejer6.gui.ventanas.Vacceso;
 public class Logica {
     //ATRIBUTOS
     /**
-     * Datos correctos de login admin,1234
+     * DATOS DE LOGIN admin,1234
      */
     private static DatosLogin datosLogin=new DatosLogin("admin","1234");
     

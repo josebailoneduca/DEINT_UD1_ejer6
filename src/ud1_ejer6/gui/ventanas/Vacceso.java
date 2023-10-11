@@ -79,6 +79,7 @@ public class Vacceso extends javax.swing.JFrame {
         btnAcceder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Acceso");
         setResizable(false);
 
         lbTitulo.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N

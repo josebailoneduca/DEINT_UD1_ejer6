@@ -100,6 +100,7 @@ public class Vregistro extends javax.swing.JFrame {
         btnMatricular = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registro");
         setResizable(false);
 
         lbTitulo.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
@@ -107,7 +108,6 @@ public class Vregistro extends javax.swing.JFrame {
         lbTitulo.setText("REGISTRO DEPORTIVO");
 
         panelInterno.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Seleccion deporte", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
-        panelInterno.setPreferredSize(new java.awt.Dimension(419, 128));
 
         lbDeporte.setText("Deporte");
 
@@ -132,7 +132,6 @@ public class Vregistro extends javax.swing.JFrame {
         inputAnual.setText("Anual");
 
         panelHijos.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Hijos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
-        panelHijos.setPreferredSize(new java.awt.Dimension(397, 171));
 
         btnToggleTabla.setLabel("Ver/Ocultar tabla");
         btnToggleTabla.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +186,8 @@ public class Vregistro extends javax.swing.JFrame {
                     .addComponent(btnToggleTabla)
                     .addComponent(btnAddHijo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout panelInternoLayout = new javax.swing.GroupLayout(panelInterno);
@@ -217,11 +217,11 @@ public class Vregistro extends javax.swing.JFrame {
                             .addComponent(inputAnual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbRenovacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelInternoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInternoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelHijos, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
-                    .addComponent(separador))
+                    .addComponent(separador)
+                    .addComponent(panelHijos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelInternoLayout.setVerticalGroup(
@@ -248,8 +248,8 @@ public class Vregistro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addComponent(panelHijos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         btnMatricular.setLabel("MATRICULAR");
@@ -266,9 +266,9 @@ public class Vregistro extends javax.swing.JFrame {
             .addGroup(panelGeneralLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
                     .addComponent(btnMatricular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelInterno, javax.swing.GroupLayout.Alignment.LEADING, 421, 421, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelInterno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelGeneralLayout.setVerticalGroup(
@@ -277,8 +277,8 @@ public class Vregistro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(panelInterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(btnMatricular)
                 .addContainerGap())
         );
@@ -300,17 +300,27 @@ public class Vregistro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Accion del boton de mostrar/ocultar tabla
+     * Accion del boton de matricular
      * @param evt 
      */
-    private void btnToggleTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleTablaActionPerformed
-        boolean esVisible = this.scrollTblHijos.isVisible();
-        if (esVisible) {
-            ocultarTabla();
-        } else {
-            mostrarTabla();
+    private void btnMatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatricularActionPerformed
+        //recoger datos
+        String deporte = inputDeporte.getSelectedItem().toString();
+        String nivel = inputNivel.getValue().toString();
+        boolean trimestral = inputTrimestral.isSelected();
+        boolean anual = inputAnual.isSelected();
+        ButtonModel turno = btnGrpTurno.getSelection();
+
+        //comprobar que los datos son correctos
+        //en caso de no serlo se muestra el error y se para la matriculacion
+        if (turno==null){
+            mostrarError("Debe seleccionar un turno");
+            return;
         }
-    }//GEN-LAST:event_btnToggleTablaActionPerformed
+
+        //avisar del exito en la matriculacion
+        mostrarExito("Se realizó la matrícula correctamente");
+    }//GEN-LAST:event_btnMatricularActionPerformed
 
     /**
      * Accion del boton de agregar hijo
@@ -326,27 +336,17 @@ public class Vregistro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddHijoActionPerformed
 
     /**
-     * Accion del boton de matricular
+     * Accion del boton de mostrar/ocultar tabla
      * @param evt 
      */
-    private void btnMatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatricularActionPerformed
-        //recoger datos
-        String deporte = inputDeporte.getSelectedItem().toString();
-        String nivel = inputNivel.getValue().toString();
-        boolean trimestral = inputTrimestral.isSelected();
-        boolean anual = inputAnual.isSelected();
-        ButtonModel turno = btnGrpTurno.getSelection();
-        
-        //comprobar que los datos son correctos
-        //en caso de no serlo se muestra el error y se para la matriculacion
-        if (turno==null){
-            mostrarError("Debe seleccionar un turno");
-            return;
+    private void btnToggleTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToggleTablaActionPerformed
+        boolean esVisible = this.panelTabla.isVisible();
+        if (esVisible) {
+            ocultarTabla();
+        } else {
+            mostrarTabla();
         }
-        
-        //avisar del exito en la matriculacion
-        mostrarExito("Se realizó la matrícula correctamente");
-    }//GEN-LAST:event_btnMatricularActionPerformed
+    }//GEN-LAST:event_btnToggleTablaActionPerformed
 
     //METODOS PROPIOS
     
@@ -356,9 +356,6 @@ public class Vregistro extends javax.swing.JFrame {
     private void ocultarTabla() {
         //check si es necesario ocultar
         this.panelTabla.setVisible(false);
-        this.scrollTblHijos.setVisible(false);
-        this.tblHijos.setVisible(false);
-        this.pack();
     }
 
     /**
@@ -367,9 +364,6 @@ public class Vregistro extends javax.swing.JFrame {
     private void mostrarTabla() {
         //check si es necesario mostrar
         this.panelTabla.setVisible(true);
-        this.scrollTblHijos.setVisible(true);
-        this.tblHijos.setVisible(true);
-        this.pack();
     }
     
     /**
