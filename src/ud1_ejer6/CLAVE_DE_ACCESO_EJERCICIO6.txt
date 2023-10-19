@@ -1,0 +1,7 @@
+Clave de acceso para el ejercicio 6:
+
+Usuario:
+admin
+
+Contraseña:
+1234
