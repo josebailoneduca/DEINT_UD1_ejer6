@@ -7,7 +7,6 @@ package ud1_ejer6.dto;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Vector;
 
 /**
  *
