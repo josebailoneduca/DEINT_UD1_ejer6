@@ -16,7 +16,9 @@ import ud1_ejer6.gui.dialogos.D_Exito;
 import ud1_ejer6.logica.Logica;
 
 /**
- * Ventana de registro de matriculas
+ * Ventana de registro de matriculas. Contiene unos campos basicos y aparte
+ * se pueden ir agregando hijos. Para agregar hijos abre una ventana secundaria
+ * y los hijos que se vayan introduciendo desde esta se mostraran en una tabla.
  * @author Jose Javier BO
  */
 public class Vregistro extends javax.swing.JFrame {
@@ -300,7 +302,8 @@ public class Vregistro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Accion del boton de matricular
+     * Accion del boton de matricular. Hace una validacion de datos y muestra un 
+     * mensaje de error o exito dependiendo de la validación.
      * @param evt 
      */
     private void btnMatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatricularActionPerformed
@@ -323,7 +326,7 @@ public class Vregistro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMatricularActionPerformed
 
     /**
-     * Accion del boton de agregar hijo
+     * Accion del boton de agregar hijo. Abre un dialogo desde el que agregarlo.
      * @param evt 
      */
     private void btnAddHijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddHijoActionPerformed

@@ -229,13 +229,15 @@ public class D_AddHijo extends javax.swing.JDialog {
         if (apellidos == null || apellidos.equals("")) {
             muestraError("Debe escribir un apellido");
             return;
-
         }
+        
+        //si ha pasado la validacion se crea un hijo y se manda a la logica.
         Hijo hijo = new Hijo(nombre, apellidos, deporte, nivel, fechaNacimiento);
         //envio    
         Logica.addHijo(hijo);
+        
+        //cierre del dialogo
         this.dispose();
-    
     }//GEN-LAST:event_btnAddActionPerformed
 
 

@@ -13,7 +13,9 @@ import ud1_ejer6.dto.Hijo;
 import ud1_ejer6.gui.ventanas.Vacceso;
 
 /**
- * Clase de logica de negocio
+ * Clase de logica de negocio. 
+ * Almacena la lista de hijos a matricular.
+ * Controla si los datos de login son correctos.(admin, 1234)
  * 
  * @author Jose Javier Bailón Ortiz
  */

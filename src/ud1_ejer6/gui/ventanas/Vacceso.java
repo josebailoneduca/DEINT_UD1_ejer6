@@ -28,7 +28,8 @@ public class Vacceso extends javax.swing.JFrame {
     
     /**
      * Intenta realizar el login preguntando a la Logica si los datos son correctos
-     * En caso de ser correctos muestra la ventana e registro. Si no es correcta muestra un error
+     * En caso de ser correctos muestra la ventana de registro deportivo. 
+     * Si la informacion de login no es correcta muestra un error.
      */
     private void intentarLogin() {
         //recopilar datos
@@ -51,7 +52,7 @@ public class Vacceso extends javax.swing.JFrame {
     }
 
     /**
-     * Muesra la ventana de registro y elimina la de login
+     * Muesra la ventana de registro deportivo y elimina la de login
      */
     private void mostrarVentanaRegistro() {
         Vregistro vRegistro = new Vregistro();
